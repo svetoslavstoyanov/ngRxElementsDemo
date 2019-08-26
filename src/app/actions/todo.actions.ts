@@ -1,6 +1,5 @@
 
 import { ITodo } from './../models/todo';
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
 // Section 2

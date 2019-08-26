@@ -6,8 +6,16 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoAddComponent } from './todo-add/todo-add.component';
 import { createCustomElement } from '@angular/elements';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './reducers/todo.reducer';
+import { reducerTodo } from './reducers/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { ReactiveFormsModule } from '@angular/forms';
+import { reducerCounter } from './reducers/counter.reducer';
+
+
+
 
 @NgModule({
   declarations: [
@@ -18,13 +26,18 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   imports: [
     BrowserModule,
     StoreModule.forRoot({
-      todo: reducer
+      todo: reducerTodo,
+      counter: reducerCounter
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: true, // Restrict extension to log-only mode
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    ButtonsModule,
+    BrowserAnimationsModule,
+    InputsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   entryComponents: [TodoListComponent, TodoAddComponent]

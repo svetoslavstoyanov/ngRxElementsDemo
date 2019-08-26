@@ -4,6 +4,7 @@ import { ITodo } from './../models/todo';
 import { IAppState } from './../app.state';
 import { Observable } from 'rxjs';
 import * as TodoActions from './../actions/todo.actions';
+import * as CounterActions from '../actions/counter.actions';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -22,6 +23,7 @@ export class TodoListComponent implements OnInit {
 
   deleteTodo(index) {
     this.store.dispatch(new TodoActions.RemoveTodo(index));
+    this.store.dispatch(new CounterActions.CounterDecrease());
   }
 
 }

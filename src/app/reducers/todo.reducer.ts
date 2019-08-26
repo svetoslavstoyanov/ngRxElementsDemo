@@ -8,7 +8,7 @@ const initialState: ITodo = {
 };
 
 // Section 2
-export function reducer(state: ITodo[] = [initialState], action: TodoActions.Actions) {
+export function reducerTodo(state: ITodo[] = [initialState], action: TodoActions.Actions) {
 
     // Section 3
     switch (action.type) {
