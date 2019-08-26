@@ -5,6 +5,7 @@ import { IAppState } from './../app.state';
 import { Observable } from 'rxjs';
 import * as TodoActions from './../actions/todo.actions';
 import * as CounterActions from '../actions/counter.actions';
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -15,15 +16,14 @@ export class TodoListComponent implements OnInit {
   todos: Observable<ITodo[]>;
 
   constructor(private store: Store<IAppState>) {
-    this.todos = this.store.select('todo');
   }
 
   ngOnInit() {
+    this.todos = this.store.select('todo');
   }
 
   deleteTodo(index) {
     this.store.dispatch(new TodoActions.RemoveTodo(index));
     this.store.dispatch(new CounterActions.CounterDecrease());
   }
-
 }

@@ -14,9 +14,6 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { reducerCounter } from './reducers/counter.reducer';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

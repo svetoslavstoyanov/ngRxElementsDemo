@@ -14,13 +14,11 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class TodoAddComponent implements OnInit, OnDestroy {
 
-
   counter = 1;
   subscription: Subscription;
 
   constructor(private store: Store<IAppState>, private formBuilder: FormBuilder) {
-    this.subscription = store.select('counter')
-    .subscribe((counterValue) => this.counter = counterValue.counter);
+
   }
 
   addTodoForm: FormGroup = this.formBuilder.group({
@@ -35,6 +33,8 @@ export class TodoAddComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.subscription = this.store.select('counter')
+      .subscribe((data) => this.counter = data);
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
