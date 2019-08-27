@@ -6,13 +6,13 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoAddComponent } from './todo-add/todo-add.component';
 import { createCustomElement } from '@angular/elements';
 import { StoreModule } from '@ngrx/store';
-import { reducerTodo } from './reducers/todo.reducer';
+import { reducerTodo } from './+store/reducers/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ReactiveFormsModule } from '@angular/forms';
-import { reducerCounter } from './reducers/counter.reducer';
+import { reducerCounter } from './+store/reducers/counter.reducer';
 
 @NgModule({
   declarations: [

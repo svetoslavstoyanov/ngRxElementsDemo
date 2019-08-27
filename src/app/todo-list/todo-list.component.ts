@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import { ITodo } from './../models/todo';
 import { IAppState } from './../app.state';
 import { Observable } from 'rxjs';
-import * as TodoActions from './../actions/todo.actions';
-import * as CounterActions from '../actions/counter.actions';
+import * as TodoActions from './../+store/actions/todo.actions';
+import * as CounterActions from '../+store/actions/counter.actions';
 
 @Component({
   selector: 'app-todo-list',

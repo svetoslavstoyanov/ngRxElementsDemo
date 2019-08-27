@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from './../app.state';
 import { ITodo } from './../models/todo';
-import * as TodoActions from './../actions/todo.actions';
-import * as CounterActions from './../actions/counter.actions';
+import * as TodoActions from './../+store/actions/todo.actions';
+import * as CounterActions from './../+store/actions/counter.actions';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 

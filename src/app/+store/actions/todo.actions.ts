@@ -1,5 +1,5 @@
 
-import { ITodo } from './../models/todo';
+import { ITodo } from './../../models/todo';
 import { Action } from '@ngrx/store';
 
 // Section 2

@@ -1,7 +1,5 @@
 
-import { Action } from '@ngrx/store';
 import * as CounterActions from './../actions/counter.actions';
-import { ICounter } from '../models/counter';
 
 // Section 1
 const initialState = 1;
