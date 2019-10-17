@@ -4,7 +4,7 @@ import { IAppState } from './../app.state';
 import * as TodoActions from './../+store/actions/todo.actions';
 import * as CounterActions from './../+store/actions/counter.actions';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-todo-add',
@@ -12,10 +12,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./todo-add.component.scss']
 })
 export class TodoAddComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild('searchInput', { static: true }) firstNameElement: ElementRef;
+
+  @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
+  isFocused = false;
 
   counter = 1;
-  subscription: Subscription;
+  counter$: Observable<number>;
+
   addTodoForm: FormGroup = this.formBuilder.group({
     todo: ['', Validators.required]
   });
@@ -24,17 +27,18 @@ export class TodoAddComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
-    this.subscription = this.store.select('counter')
-      .subscribe((data) => this.counter = data);
+    this.counter$ = this.store.select('counter');
   }
 
   ngAfterViewInit() {
-    window.addEventListener('keyup', (e) => e.key === '/' && this.firstNameElement.nativeElement.focus());
+    document.addEventListener('keyup', this.focusOnInput);
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    document.removeEventListener('keyup', this.focusOnInput);
   }
+
+  focusOnInput = (e: KeyboardEvent) => (e.key === '/' && (this.isFocused = true, this.searchInput.nativeElement.focus()));
 
   addTodo() {
     const todo = { todo: this.addTodoForm.value.todo };

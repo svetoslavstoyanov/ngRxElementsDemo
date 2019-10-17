@@ -1,7 +1,8 @@
 <div class="add-todo-container">
-    <h2>Todo`s: {{ counter }}</h2>
+    <h2>Todo`s: {{ counter$ | async }}</h2>
     <form [formGroup]='addTodoForm' (ngSubmit)='addTodo()'>
-        <input kendoTextBox type="text" placeholder="todo" formControlName='todo' #searchInput>
+        <input kendoTextBox type="text" placeholder="todo" [ngClass]="{'focus': isFocused}" formControlName='todo'
+            (focusout)='isFocused=false' #searchInput>
         <button type='submit' kendoButton [primary]="true" [disabled]='!addTodoForm.valid'>Add todo</button>
     </form>
 </div>
